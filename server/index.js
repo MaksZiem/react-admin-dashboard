@@ -10,6 +10,10 @@ import generalRoutes from './routes/general.js'
 import managementRoutes from './routes/management.js'
 import salesRoutes from './routes/sales.js' //ctrl{+d}
 
+//data imports
+import User from "./models/User.js";
+import {dataUser} from "./data/index.js"
+
 //configuration
 
 dotenv.config()
@@ -36,6 +40,7 @@ mongoose.connect(process.env.MONGO_URL, {
     useUnifiedTopology: true,
 }).then(()=>{
   app.listen(PORT, ()=> console.log('server is up'))  
+  // User.insertMany(dataUser)
 }).catch((err) => {
     console.log(err)
 })
